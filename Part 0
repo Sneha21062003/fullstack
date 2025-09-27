@@ -1,0 +1,92 @@
+part0
+0.1: HTML
+0.2: CSS
+0.3: HTML forms
+0.4: New note diagram--
+
+sequenceDiagram
+    participant browser
+    participant server
+
+    Note right of browser: User writes a new note and clicks Save
+    browser->>server: POST new note data
+    activate server
+    Note right of server: Server saves the note
+    server-->>browser: Confirmation response
+    deactivate server
+
+    Note right of browser: Browser adds the new note to the page
+
+0.5: Single page app diagram---
+
+When a user first visits the SPA:
+
+Browser requests the SPA HTML page from the server.
+
+Server responds with the HTML, CSS, and main JavaScript files.
+
+The browser executes JavaScript, which fetches the notes JSON from the server.
+
+Browser renders the notes dynamically without reloading the page.
+
+Here’s the Mermaid sequence diagram for that:
+
+sequenceDiagram
+    participant browser
+    participant server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa
+    activate server
+    server-->>browser: HTML document
+    deactivate server
+
+    browser->>server: GET main.css
+    activate server
+    server-->>browser: CSS file
+    deactivate server
+
+    browser->>server: GET main.js
+    activate server
+    server-->>browser: JavaScript file
+    deactivate server
+
+    Note right of browser: Browser executes JS and fetches existing notes
+    browser->>server: GET data.json
+    activate server
+    server-->>browser: JSON array of notes
+    deactivate server
+
+    Note right of browser: Browser dynamically renders notes without reloading the page
+
+0.6: New note in Single page app diagram
+
+--> New note in Single page app diagram – creating a note
+
+1.When a user adds a note in an SPA:
+
+2.User writes a note and clicks Save.
+
+3.JavaScript triggers a POST request to the server with the new note data.
+
+4.Server saves the note and responds with a confirmation.
+
+5.JavaScript dynamically updates the notes on the page, no reload.
+
+Here’s the Mermaid diagram for that:
+
+sequenceDiagram
+    participant browser
+    participant server
+
+    Note right of browser: User writes a new note and clicks Save
+    browser->>server: POST new note data
+    activate server
+    Note right of server: Server saves the note
+    server-->>browser: Confirmation response
+    deactivate server
+
+    Note right of browser: Browser dynamically adds the new note to the page
+
+
+
+ 
